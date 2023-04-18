@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://damp8f73eqlbq"]
+
+[ext_resource type="Script" path="res://ClothingSlot.gd" id="1_t0med"]
+[ext_resource type="Texture2D" uid="uid://bioywce05a6d7" path="res://GridCell.png" id="2_pw7nv"]
+[ext_resource type="PackedScene" uid="uid://dqprvwq757w43" path="res://item_2d.tscn" id="3_mfql2"]
+[ext_resource type="Script" path="res://InventorySlotS.gd" id="4_6tbf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qn1c"]
+size = Vector2(384, 256)
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Pants" type="Node2D" parent="."]
+position = Vector2(256, 128)
+script = ExtResource("1_t0med")
+
+[node name="InventorySlots" type="Area2D" parent="Pants" groups=["InventorySlot"]]
+position = Vector2(-192, -128)
+script = ExtResource("4_6tbf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pants/InventorySlots"]
+position = Vector2(192, 128)
+shape = SubResource("RectangleShape2D_7qn1c")
+
+[node name="TextureRect" type="TextureRect" parent="Pants"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -128.0
+offset_right = 192.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pw7nv")
+stretch_mode = 1
+
+[node name="Shirt" type="Node2D" parent="."]
+position = Vector2(-256, 128)
+script = ExtResource("1_t0med")
+
+[node name="InventorySlots" type="Area2D" parent="Shirt" groups=["InventorySlot"]]
+position = Vector2(-192, -128)
+script = ExtResource("4_6tbf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shirt/InventorySlots"]
+position = Vector2(192, 128)
+shape = SubResource("RectangleShape2D_7qn1c")
+
+[node name="TextureRect" type="TextureRect" parent="Shirt"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -128.0
+offset_right = 192.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pw7nv")
+stretch_mode = 1
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Item2D2" parent="." instance=ExtResource("3_mfql2")]
+modulate = Color(1, 1, 1, 0.921569)
+position = Vector2(128, 64)
+
+[node name="Item2D" parent="." instance=ExtResource("3_mfql2")]
+modulate = Color(1, 1, 1, 0.921569)
+position = Vector2(-384, 64)
+
+[connection signal="mouse_entered" from="Pants/InventorySlots" to="Pants/InventorySlots" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pants/InventorySlots" to="Pants/InventorySlots" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Shirt/InventorySlots" to="Shirt/InventorySlots" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Shirt/InventorySlots" to="Shirt/InventorySlots" method="_on_mouse_exited"]
