@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dkhvahp2nl2j8"
+path="res://.godot/imported/Concrete 1.wav-19ea07f4e9873cecedc8ab9f39cfacbc.sample"
+
+[deps]
+
+source_file="res://Assets/Concrete 1.wav"
+dest_files=["res://.godot/imported/Concrete 1.wav-19ea07f4e9873cecedc8ab9f39cfacbc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

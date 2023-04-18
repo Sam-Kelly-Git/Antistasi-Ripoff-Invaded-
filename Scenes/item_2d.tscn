@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://2gbpcbtlq5bw"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/Item2D.gd" id="1_at4an"]
+[ext_resource type="Texture2D" uid="uid://bnkkj63jbhkw" path="res://Assets/icon.svg" id="2_16rrs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp8at"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66raf"]
+size = Vector2(32, 32)
+
+[node name="Item2D" type="Node2D"]
+script = ExtResource("1_at4an")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_16rrs")
+
+[node name="Mouseinput" type="Area2D" parent="." groups=["Item"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouseinput"]
+shape = SubResource("RectangleShape2D_sp8at")
+
+[node name="TL" type="Area2D" parent="." groups=["Corner"]]
+position = Vector2(-32, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TL"]
+position = Vector2(-16, -16)
+shape = SubResource("RectangleShape2D_66raf")
+
+[node name="TR" type="Area2D" parent="." groups=["Corner"]]
+position = Vector2(32, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TR"]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_66raf")
+
+[node name="BL" type="Area2D" parent="." groups=["Corner"]]
+position = Vector2(-32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BL"]
+position = Vector2(-16, 16)
+shape = SubResource("RectangleShape2D_66raf")
+
+[node name="BR" type="Area2D" parent="." groups=["Corner"]]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BR"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_66raf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="area_entered" from="Mouseinput" to="." method="_on_mouseinput_area_entered"]
+[connection signal="area_exited" from="Mouseinput" to="." method="_on_mouseinput_area_exited"]
+[connection signal="mouse_entered" from="Mouseinput" to="." method="_on_mouseinput_mouse_entered"]
+[connection signal="mouse_exited" from="Mouseinput" to="." method="_on_mouseinput_mouse_exited"]
+[connection signal="area_entered" from="TL" to="." method="_on_tl_area_entered"]
+[connection signal="area_exited" from="TL" to="." method="_on_tl_area_exited"]
+[connection signal="area_entered" from="TR" to="." method="_on_tr_area_entered"]
+[connection signal="area_exited" from="TR" to="." method="_on_tr_area_exited"]
+[connection signal="area_entered" from="BL" to="." method="_on_bl_area_entered"]
+[connection signal="area_exited" from="BL" to="." method="_on_bl_area_exited"]
+[connection signal="area_entered" from="BR" to="." method="_on_br_area_entered"]
+[connection signal="area_exited" from="BR" to="." method="_on_br_area_exited"]

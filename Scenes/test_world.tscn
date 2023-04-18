@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Material" uid="uid://dcmvq3s3n3xdm" path="res://Assets/proto.tres" id="1_djmvn"]
+[ext_resource type="PackedScene" uid="uid://dqvmd32oqx6wk" path="res://Scenes/character.tscn" id="1_thllm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rmusl"]
+material = ExtResource("1_djmvn")
+size = Vector3(1000, 0.2, 1000)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yb4jp"]
+material = ExtResource("1_djmvn")
+size = Vector3(12.462, 5, 13.953)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fvfwu"]
+material = ExtResource("1_djmvn")
+size = Vector3(10.784, 4, 8.27)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5tkm"]
+sun_angle_max = 130.64
+sun_curve = 0.0989631
+
+[sub_resource type="Sky" id="Sky_n8poi"]
+sky_material = SubResource("ProceduralSkyMaterial_u5tkm")
+
+[sub_resource type="Environment" id="Environment_bntax"]
+background_mode = 2
+background_color = Color(0.501961, 0.694118, 1, 1)
+sky = SubResource("Sky_n8poi")
+
+[node name="test world" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79646, 0)
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.325884, 0)
+mesh = SubResource("BoxMesh_rmusl")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28326, 0)
+mesh = SubResource("BoxMesh_yb4jp")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79914, -4.25547)
+operation = 2
+mesh = SubResource("BoxMesh_fvfwu")
+
+[node name="character" parent="." instance=ExtResource("1_thllm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24751, 2.7614, -1.88107)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bntax")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.67604, -0.691756, 0.253859, 0.211845, 0.512427, 0.83219, -0.705756, -0.508815, 0.492966, 0, 1.79646, 0)
+shadow_enabled = true
+shadow_blur = 0.719
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.61495, -3.45247)
+light_energy = 16.0
+spot_range = 7.97264
+spot_angle = 101.36

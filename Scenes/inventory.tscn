@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://2o1qt3820a6c"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/ClothingSlot.gd" id="1_11pmc"]
+[ext_resource type="Script" path="res://Scenes/Scripts/InventorySlotS.gd" id="2_uknqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qn1c"]
+size = Vector2(384, 256)
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Pants" type="Node2D" parent="."]
+position = Vector2(256, 128)
+script = ExtResource("1_11pmc")
+
+[node name="InventorySlots" type="Area2D" parent="Pants" groups=["InventorySlot"]]
+position = Vector2(-192, -128)
+script = ExtResource("2_uknqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pants/InventorySlots"]
+position = Vector2(192, 128)
+shape = SubResource("RectangleShape2D_7qn1c")
+
+[node name="TextureRect" type="TextureRect" parent="Pants"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -128.0
+offset_right = 192.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 1
+
+[node name="Shirt" type="Node2D" parent="."]
+position = Vector2(-256, 128)
+script = ExtResource("1_11pmc")
+
+[node name="InventorySlots" type="Area2D" parent="Shirt" groups=["InventorySlot"]]
+position = Vector2(-192, -128)
+script = ExtResource("2_uknqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shirt/InventorySlots"]
+position = Vector2(192, 128)
+shape = SubResource("RectangleShape2D_7qn1c")
+
+[node name="TextureRect" type="TextureRect" parent="Shirt"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -128.0
+offset_right = 192.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 1
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(0, -32)
+
+[connection signal="mouse_entered" from="Pants/InventorySlots" to="Pants/InventorySlots" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pants/InventorySlots" to="Pants/InventorySlots" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Shirt/InventorySlots" to="Shirt/InventorySlots" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Shirt/InventorySlots" to="Shirt/InventorySlots" method="_on_mouse_exited"]
