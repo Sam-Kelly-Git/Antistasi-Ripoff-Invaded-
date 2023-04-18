@@ -3,8 +3,8 @@ This is a remake of the original Antistasi scenario for Arma 3 in the Godot game
 
 
 Current Features:
-  Character Controler (Walk, Run, Crouch, Crawl, Headbob, Footsteps)
-  Basic Test World
+  Character Controler (Walk, Run, Crouch, Crawl, Headbob, Footsteps),
+  Basic Test World,
   VERY basic inventory system which is what currently being worked on.
 
 Todo list:
