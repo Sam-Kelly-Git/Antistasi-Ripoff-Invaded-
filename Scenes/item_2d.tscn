@@ -52,8 +52,6 @@ position = Vector2(32, 32)
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_66raf")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [connection signal="area_entered" from="Mouseinput" to="." method="_on_mouseinput_area_entered"]
 [connection signal="area_exited" from="Mouseinput" to="." method="_on_mouseinput_area_exited"]
 [connection signal="mouse_entered" from="Mouseinput" to="." method="_on_mouseinput_mouse_entered"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7tshss11fbjt"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/ClothingSlot.gd" id="1_osb7s"]
+[ext_resource type="Script" path="res://Scenes/Scripts/InventorySlotS.gd" id="2_2xn4i"]
+[ext_resource type="Texture2D" uid="uid://bioywce05a6d7" path="res://Assets/GridCell.png" id="3_u2yru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d66i8"]
+size = Vector2(384, 256)
+
+[node name="ClothingSlot" type="Node2D"]
+script = ExtResource("1_osb7s")
+h_slots = 5
+v_slots = 6
+
+[node name="InventorySlots" type="Area2D" parent="." groups=["InventorySlot"]]
+script = ExtResource("2_2xn4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventorySlots"]
+position = Vector2(192, 128)
+shape = SubResource("RectangleShape2D_d66i8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 384.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u2yru")
+stretch_mode = 1
+
+[node name="Slots" type="RichTextLabel" parent="."]
+offset_top = -48.0
+offset_right = 304.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Clothing Item (x/x)"
+
+[connection signal="mouse_entered" from="InventorySlots" to="InventorySlots" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventorySlots" to="InventorySlots" method="_on_mouse_exited"]

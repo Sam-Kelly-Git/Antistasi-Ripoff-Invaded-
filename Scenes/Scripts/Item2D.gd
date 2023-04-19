@@ -12,11 +12,13 @@ var quad_amount : int = 0
 var target_position : Vector2
 
 @onready var texture = $TextureRect
+@onready var item = preload("res://Scenes/item_2d.tscn")
 
 func _ready():
 	target_position = global_position
 	return_position = global_position
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Left_Click") and mouseInside:
 		selected = true
@@ -52,14 +54,10 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("Left_Click") and selected:
 		if itemInside:
 			target_position = global_position.snapped(Vector2(64, 64))
-#			var new_parent = target_body
-#			get_parent().remove_child(self)
-#			new_parent.add_child(self)
 		else:
 			target_position = return_position
 		selected = false
 		top_level = false
-
 
 func _on_tl_area_entered(area):
 	if area.is_in_group("InventorySlot"):
