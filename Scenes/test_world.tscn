@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://5r4asdckn4gx"]
 
 [ext_resource type="Material" uid="uid://dcmvq3s3n3xdm" path="res://Assets/proto.tres" id="1_djmvn"]
-[ext_resource type="PackedScene" uid="uid://dqvmd32oqx6wk" path="res://Scenes/character.tscn" id="1_thllm"]
+[ext_resource type="PackedScene" path="res://Scenes/character.tscn" id="1_thllm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rmusl"]
 material = ExtResource("1_djmvn")

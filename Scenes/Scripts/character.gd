@@ -100,12 +100,9 @@ func _physics_process(delta):
 			if isCrouching == false:
 				movementStateChange("crouch")
 				speed_multiplier = crouch_speed
-
 			elif isCrouching == true:
 				movementStateChange("uncrouch")
 				speed_multiplier = walk_speed
-			
-			
 		elif Input.is_action_just_pressed("crawl"):
 			if isCrawling == false:
 				movementStateChange("crawl")
@@ -186,57 +183,4 @@ func footsteps():
 		step = false
 
 
-# Inventory variable, contains all the item IDs and their amounts in the players inventory
-#var inventory : Dictionary = {
-#
-#}
-#
-#var items_nearby : Array = [
-#
-#]
-
-#func _process(delta):
-#	var inventory_text = $Head/Camera3D/Inventory2/Back/InventoryText
-#	var inventory_node = $Head/Camera3D/Inventory2
-#	var items_on_ground = $Head/Camera3D/Inventory2/Back/SuroundingItems
-#
-#	if Input.is_action_pressed("Inventory"):
-#		inventory_node.show()
-#	else:
-#		inventory_node.hide()
-#	inventory_text.text = str(inventory)
-#	items_on_ground.text = str(items_nearby)
-
-
-
-# Adds specific item ID and amount to player inventory (Used for things such as arsenal boxes, looting, adding items direct to inventory)
-#func give_item(id, amount):
-#	if ItemDatabase.item_list.has(id): # Checking if item exists
-#		if not inventory.has(id): # Checking if inventory already has the item...
-#			inventory[id] = amount # New item stack
-#			print("CREATED " + str(amount) + " OF ID " + str(id))
-#		elif inventory.has(id): # Checking if inventory already has the item...
-#			inventory[id] += amount # Adding to existing stack
-#			print("ADDED " + str(amount) + " TO ID " + str(id))
-
-# Opposite of give item E.G putting items in boxes, vehicles ect...
-#func remove_item(id, amount):
-#	if ItemDatabase.item_list.has(id): # Checking if item exists
-#		if inventory.has(id): # Checking if inventory already has the item...
-#			if inventory.get(id) - amount <= 0: # Erases the key from the inventory variable
-#				inventory.erase(id)
-#				print("REMOVED " + str(id))
-#			elif inventory.get(id) - amount >= 1: # Minuses the amount removed
-#				inventory[id] -= amount
-#				print("REMOVED " + str(amount) + " OF ID " + str(id))
-
-# Picking up an item from the ground E.G Items you can see on the ground independent from crates ect...
-#func pickup_item(id, amount):
-#
-#	pass
-
-# Opposite of pickup item E.G putting and item on the ground
-#func drop_item(id, amount):
-#
-#	pass
 
