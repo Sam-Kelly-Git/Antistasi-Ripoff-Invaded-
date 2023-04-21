@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2o1qt3820a6c"]
 
-[ext_resource type="PackedScene" uid="uid://b7tshss11fbjt" path="res://Scenes/clothing_slot.tscn" id="1_avl31"]
-[ext_resource type="PackedScene" uid="uid://2gbpcbtlq5bw" path="res://Scenes/item_2d.tscn" id="3_r2l66"]
+[ext_resource type="Script" path="res://Scenes/inventory.gd" id="1_opse8"]
+[ext_resource type="PackedScene" uid="uid://b7tshss11fbjt" path="res://Scenes/clothing_slot.tscn" id="1_w7hwn"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -11,14 +11,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_opse8")
 
-[node name="Camera2D2" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+[node name="Slots" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
 
-[node name="ClothingSlot" parent="." instance=ExtResource("1_avl31")]
-position = Vector2(256, 256)
-h_slots = 6
+[node name="ClothingSlot" parent="Slots" instance=ExtResource("1_w7hwn")]
+position = Vector2(1408, 64)
+h_slots = 5
 v_slots = 4
 
-[node name="Item2D" parent="." instance=ExtResource("3_r2l66")]
-position = Vector2(807, 493)
+[node name="ClothingSlot2" parent="Slots" instance=ExtResource("1_w7hwn")]
+position = Vector2(1408, 512)
+h_slots = 5
+v_slots = 4
+clothing_item = "Chest Rig"
+clothing_slot = "Rig"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)

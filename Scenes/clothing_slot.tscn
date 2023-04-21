@@ -1,43 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7tshss11fbjt"]
+[gd_scene load_steps=6 format=3 uid="uid://b7tshss11fbjt"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/ClothingSlot.gd" id="1_osb7s"]
 [ext_resource type="Script" path="res://Scenes/Scripts/InventorySlotS.gd" id="2_2xn4i"]
-[ext_resource type="Texture2D" uid="uid://bioywce05a6d7" path="res://Assets/GridCell.png" id="3_u2yru"]
+[ext_resource type="Texture2D" uid="uid://cp4kyg45vgnhd" path="res://Assets/GridCell_64x64.png" id="3_mcjwq"]
+[ext_resource type="Texture2D" uid="uid://dt6wig2q4q0uy" path="res://Assets/white.png" id="4_ycsc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d66i8"]
-size = Vector2(384, 256)
+size = Vector2(384, 384)
 
 [node name="ClothingSlot" type="Node2D"]
 script = ExtResource("1_osb7s")
-h_slots = 5
-v_slots = 6
 
 [node name="InventorySlots" type="Area2D" parent="." groups=["InventorySlot"]]
 script = ExtResource("2_2xn4i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventorySlots"]
-position = Vector2(192, 128)
+position = Vector2(192, 192)
 shape = SubResource("RectangleShape2D_d66i8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 1)
 texture_filter = 1
+clip_contents = true
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_right = 384.0
-offset_bottom = 256.0
+offset_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_u2yru")
+texture = ExtResource("3_mcjwq")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+modulate = Color(0, 0, 0, 0.176471)
+layout_mode = 0
+offset_right = 528.0
+offset_bottom = 512.0
+texture = ExtResource("4_ycsc2")
 
 [node name="Slots" type="RichTextLabel" parent="."]
 offset_top = -48.0
 offset_right = 304.0
 theme_override_font_sizes/normal_font_size = 30
 text = "Clothing Item (x/x)"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.152941, 0.152941, 0.152941, 1)
+offset_left = -136.0
+offset_right = -8.0
+offset_bottom = 72.0
+texture = ExtResource("4_ycsc2")
+expand_mode = 1
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = -136.0
+offset_top = 1.0
+offset_right = -8.0
+offset_bottom = 73.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Outfit"
 
 [connection signal="mouse_entered" from="InventorySlots" to="InventorySlots" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="InventorySlots" to="InventorySlots" method="_on_mouse_exited"]
